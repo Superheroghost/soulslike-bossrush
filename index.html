@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASHEN GAUNTLET - Boss Rush</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui-overlay">
+            <div id="title-screen" class="screen active">
+                <div class="title-text">
+                    <h1>ASHEN GAUNTLET</h1>
+                    <p class="subtitle">A Boss Rush Ordeal</p>
+                </div>
+                <div class="menu-options">
+                    <button class="menu-btn" data-action="start-gauntlet">Begin Gauntlet</button>
+                    <button class="menu-btn" data-action="boss-select">Boss Select</button>
+                    <button class="menu-btn" data-action="hub">Rest at Bonfire</button>
+                    <button class="menu-btn" data-action="controls">Controls</button>
+                </div>
+            </div>
+            <div id="controls-screen" class="screen">
+                <h2>CONTROLS</h2>
+                <div class="controls-grid">
+                    <div class="control-item"><span class="key">A/D</span> Move</div>
+                    <div class="control-item"><span class="key">SPACE</span> Dodge Roll</div>
+                    <div class="control-item"><span class="key">J / Click</span> Light Attack</div>
+                    <div class="control-item"><span class="key">K / Shift+Click</span> Heavy Attack</div>
+                    <div class="control-item"><span class="key">L</span> Block / Parry</div>
+                    <div class="control-item"><span class="key">E</span> Heal (Flask)</div>
+                    <div class="control-item"><span class="key">SHIFT</span> Sprint</div>
+                    <div class="control-item"><span class="key">ESC</span> Pause</div>
+                </div>
+                <p class="hint">Parry: Press block within 5 frames of an attack connecting</p>
+                <p class="hint">Riposte: Light attack during boss stagger for critical damage</p>
+                <button class="menu-btn" data-action="back">Back</button>
+            </div>
+            <div id="hub-screen" class="screen">
+                <h2>🔥 BONFIRE</h2>
+                <div class="hub-sections">
+                    <div class="hub-section">
+                        <h3>Weapons</h3>
+                        <div id="weapon-list" class="item-list"></div>
+                    </div>
+                    <div class="hub-section">
+                        <h3>Relics</h3>
+                        <div id="relic-list" class="item-list"></div>
+                    </div>
+                    <div class="hub-section">
+                        <h3>Lore</h3>
+                        <div id="lore-list" class="item-list"></div>
+                    </div>
+                </div>
+                <button class="menu-btn" data-action="back">Back</button>
+            </div>
+            <div id="boss-select-screen" class="screen">
+                <h2>BOSS SELECT</h2>
+                <div id="boss-grid" class="boss-grid"></div>
+                <button class="menu-btn" data-action="back">Back</button>
+            </div>
+            <div id="buff-select-screen" class="screen">
+                <h2>CHOOSE A BLESSING</h2>
+                <div id="buff-choices" class="buff-choices"></div>
+            </div>
+            <div id="pause-screen" class="screen">
+                <h2>PAUSED</h2>
+                <button class="menu-btn" data-action="resume">Resume</button>
+                <button class="menu-btn" data-action="restart">Restart Fight</button>
+                <button class="menu-btn" data-action="quit">Quit to Menu</button>
+            </div>
+        </div>
+        <div id="death-overlay" class="overlay">
+            <h1 class="death-text">YOU DIED</h1>
+            <p class="death-count">Deaths: <span id="death-count-num">0</span></p>
+            <p class="hint">Press any key to retry</p>
+        </div>
+        <div id="victory-overlay" class="overlay">
+            <h1 class="victory-text">BOSS VANQUISHED</h1>
+            <div class="victory-stats">
+                <p>Time: <span id="victory-time">0:00</span></p>
+                <p>Deaths: <span id="victory-deaths">0</span></p>
+                <p>Parries: <span id="victory-parries">0</span></p>
+                <p>Damage Taken: <span id="victory-damage">0</span></p>
+            </div>
+            <p class="hint">Press any key to continue</p>
+        </div>
+        <div id="phase-transition" class="overlay">
+            <div class="phase-text"></div>
+        </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
